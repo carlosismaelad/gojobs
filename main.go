@@ -3,10 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
 	"os"
 
-	"github.com/gin-gonic/gin"
+	"github.com/carlosismaelad/gojobs/router"
 )
 
 func loadBanner() string {
@@ -24,12 +23,8 @@ func main() {
 	fmt.Println()
 	fmt.Println("🚀 Starting the GoJobs API...")
 	fmt.Println()
+
+	// Initialize router
+	router.Initialize()
 	
-	r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-    c.JSON(http.StatusOK, gin.H{
-      "message": "API ok!",
-    })
-  })
-	r.Run()
 }
