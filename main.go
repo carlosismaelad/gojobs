@@ -16,7 +16,7 @@ var (
 func loadBanner() string {
 	banner, err := os.ReadFile("banner.txt")
 	if err != nil {
-		log.Printf("Error loading banner: %v", err)
+		log.Printf("error loading banner: %v", err)
 		return "GoJobs API"
 	}
 	return string(banner)
@@ -34,7 +34,7 @@ func main() {
 	// initialize configs
 	err := config.Init()
 	if err != nil {
-		logger.Errorf("Config initialization error: %v",err)
+		logger.Errorf("config initialization error: %v",err)
 		return
 	}
 
