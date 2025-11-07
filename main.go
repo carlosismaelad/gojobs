@@ -25,6 +25,5 @@ func main() {
 	fmt.Println()
 
 	// Initialize router
-	router.Initialize()
-	
+	router.Initialize()	
 }
