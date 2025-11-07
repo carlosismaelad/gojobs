@@ -5,7 +5,12 @@ import (
 	"log"
 	"os"
 
+	"github.com/carlosismaelad/gojobs/config"
 	"github.com/carlosismaelad/gojobs/router"
+)
+
+var (
+	logger *config.Logger
 )
 
 func loadBanner() string {
@@ -23,6 +28,15 @@ func main() {
 	fmt.Println()
 	fmt.Println("🚀 Starting the GoJobs API...")
 	fmt.Println()
+
+	logger = config.GetLogger("main")
+
+	// initialize configs
+	err := config.Init()
+	if err != nil {
+		logger.Errorf("Config initialization error: %v",err)
+		return
+	}
 
 	// Initialize router
 	router.Initialize()	
