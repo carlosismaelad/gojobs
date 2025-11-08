@@ -21,6 +21,13 @@ definitions:
       message:
         type: string
     type: object
+  handler.DeleteOpeningResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.OpeningResponse'
+      message:
+        type: string
+    type: object
   schemas.OpeningResponse:
     properties:
       company:
@@ -48,6 +55,25 @@ info:
   contact: {}
 paths:
   /opening:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a new job opening
+      parameters:
+      - description: Opening identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.DeleteOpeningResponse'
+      tags:
+      - Openings
     post:
       consumes:
       - application/json
